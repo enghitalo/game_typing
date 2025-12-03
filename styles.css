@@ -1,0 +1,159 @@
+/* Basic Reset and Layout */
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.app-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1100px;
+  padding: 1.5rem;
+}
+
+.sidebar {
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header h2 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.1rem;
+}
+.sidebar .hint {
+  color: #888;
+  font-size: 0.85rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.drop-zone {
+  border: 2px dashed #c8c8d0;
+  border-radius: 10px;
+  padding: 0.75rem;
+  text-align: center;
+  color: #666;
+  background: #fafafa;
+  cursor: pointer;
+}
+.drop-zone.dragover {
+  border-color: #6c8cff;
+  background: #f0f6ff;
+  color: #3b5bfd;
+}
+
+.file-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0 0;
+  overflow: auto;
+  flex: 1;
+}
+.file-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.file-list li:hover {
+  background: #f5f7ff;
+}
+.file-list li.active {
+  background: #e9efff;
+}
+.file-list .name {
+  font-size: 0.95rem;
+  color: #222;
+}
+.file-list .size {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.container {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  max-width: 800px;
+  width: 100%;
+  position: relative;
+}
+
+/* The Visual Text Display 
+   This is what the user sees. 
+*/
+#quote-display {
+  font-size: 1.8rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  /* Prevent user from highlighting text manually to avoid confusion */
+  user-select: none;
+  cursor: text;
+}
+
+/* Default state of letters (Future text) */
+#quote-display span {
+  color: #ccc; /* Gray */
+  border-bottom: 2px solid transparent; /* Placeholder for cursor */
+}
+
+/* Correctly typed letter */
+#quote-display span.correct {
+  color: #111; /* Black */
+}
+
+/* Incorrectly typed letter */
+#quote-display span.incorrect {
+  color: #da3333; /* Red */
+  background-color: #ffeaea;
+  border-radius: 4px;
+}
+
+/* The Active Cursor Blinker */
+#quote-display span.active {
+  border-bottom: 2px solid #666;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* The Hidden Input 
+   This captures the keystrokes but is invisible to the user.
+   We position it absolute and make it transparent so it doesn't break layout.
+*/
+#quote-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: default;
+  resize: none;
+}
+
+.instructions {
+  color: #888;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  text-align: center;
+}

@@ -53,3 +53,29 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# Node/Frontend cache (if any)
+node_modules/
+.cache/
+
+# Local environment files
+.env
+.env.*
+.envrc
+
+# Direnv
+.direnv/
+
+# OpenTofu/Terraform
+infra/.terraform/
+infra/.terraform.lock.hcl
+infra/terraform.tfstate
+infra/terraform.tfstate.*
+infra/tofu.tfstate
+infra/tofu.tfstate.*
+infra/.terraform-version
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
